@@ -3,7 +3,7 @@ import { Code2, Database, Globe, Layers, Server, Smartphone, Terminal, Cpu, Book
 export const SOCIALS = {
   github: "https://github.com/jachias21",
   linkedin: "https://www.linkedin.com/in/joanalbert-chias-catala", // Asegúrate que este sea tu link correcto
-  email: "mailto:joanalbertchias9@gmail.com"
+  email: "joanalbertchias9@gmail.com"
 };
 
 export const PROFILE = {

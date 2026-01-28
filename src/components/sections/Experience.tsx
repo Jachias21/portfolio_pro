@@ -59,9 +59,6 @@ export default function Experience() {
 
               
             </motion.div>
-
-
-// ...
           ))}
         </div>
       </div>
