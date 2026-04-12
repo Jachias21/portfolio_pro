@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const STACK_BLOCKS = [
   {
@@ -54,13 +54,19 @@ const STACK_BLOCKS = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.1 + 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1 + 0.1,
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
   }),
 };
+
 
 export default function TechStack() {
   return (

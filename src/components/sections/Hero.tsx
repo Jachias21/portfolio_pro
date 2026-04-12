@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { PROFILE, SOCIALS } from '@/data/portfolio';
 import { useEffect, useState } from 'react';
 
@@ -45,11 +45,16 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  show: (delay = 0) => ({
-    opacity: 1, y: 0,
-    transition: { delay, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  show: (delay: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay,
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
   }),
 };
 
