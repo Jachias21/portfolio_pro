@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const links = [
   { name: 'About', href: '#hero' },
