@@ -1,117 +1,186 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Database, Smartphone, Wrench, Cpu } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 
-const STACK = [
+const STACK_BLOCKS = [
   {
-    title: "Backend & Database",
-    icon: <Database className="w-6 h-6" />,
-    description: "Construcción de lógica de servidor robusta y gestión eficiente de datos.",
-    tags: ["Java", "Spring Boot", "PHP", "Laravel", "Python", "MySQL", "MongoDB"]
+    title: 'Backend & Data',
+    span: 'lg:col-span-2',
+    accent: '#5b7fff',
+    tags: ['Java', 'Spring Boot', 'PHP', 'Laravel', 'Python', 'MySQL', 'MongoDB'],
+    description: 'Construyendo lógica de servidor robusta y pipelines de datos eficientes y escalables.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M4 7v10M4 7a3 3 0 016 0M4 7a3 3 0 00-3 3v4a3 3 0 003 3m0 0a3 3 0 006 0M10 7v10m0 0a3 3 0 006 0m0 0a3 3 0 003-3v-4a3 3 0 00-3-3m0 0a3 3 0 00-6 0" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
-    title: "Mobile & Frontend",
-    icon: <Smartphone className="w-6 h-6" />,
-    description: "Desarrollo de experiencias nativas y multiplataforma fluidas.",
-    tags: ["Kotlin (Android)", "Flutter", "Dart", "React Native", "React", "TypeScript"]
+    title: 'Móvil y Frontend',
+    span: 'lg:col-span-1',
+    accent: '#a78bfa',
+    tags: ['Kotlin', 'Flutter', 'Dart', 'React', 'TypeScript', 'React Native'],
+    description: 'Aplicaciones nativas y multiplataforma con una UX fluida e intuitiva.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <path d="M12 18h.01" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
-    title: "Tools & DevOps",
-    icon: <Wrench className="w-6 h-6" />,
-    description: "Optimización de flujos de trabajo y despliegue.",
-    tags: ["Git", "GitHub", "Bash Scripting", "Postman", "IntelliJ IDEA", "VS Code"]
+    title: 'IA y Big Data',
+    span: 'lg:col-span-1',
+    accent: '#34d399',
+    tags: ['Python', 'Data Analysis', 'Prompt Engineering', 'ML Fundamentals'],
+    description: 'Integrando inteligencia — actualmente cursando el Máster en IA y Big Data en STUCOM.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
-    title: "AI & Innovation",
-    icon: <Cpu className="w-6 h-6" />,
-    description: "Integración de inteligencia artificial y análisis de datos.",
-    tags: ["IA & Big Data", "Data Analysis", "Prompt Engineering", "Problem Solving"]
-  }
+    title: 'DevOps & Tools',
+    span: 'lg:col-span-2',
+    accent: '#fb923c',
+    tags: ['Git', 'GitHub', 'Bash Scripting', 'Postman', 'IntelliJ IDEA', 'VS Code', 'Docker basics'],
+    description: 'Optimizando flujos de trabajo desde el desarrollo hasta el despliegue.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" strokeLinecap="round" />
+      </svg>
+    ),
+  },
 ];
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1 + 0.1,
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  }),
+};
+
 
 export default function TechStack() {
   return (
-    <section id="stack" className="py-24 bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
-      <div className="container mx-auto px-6">
-        
-        {/* Encabezado */}
-        <div className="text-center mb-16">
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-blue-600 dark:text-blue-400 font-bold tracking-wider text-sm uppercase"
-          >
-            Lo que utilizo
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2"
-          >
-            Tech Stack & <span className="text-blue-600 dark:text-blue-500">Expertise</span>
-          </motion.h2>
-          <motion.p 
-             initial={{ opacity: 0 }}
-             whileInView={{ opacity: 1 }}
-             viewport={{ once: true }}
-             transition={{ delay: 0.2 }}
-             className="text-slate-600 dark:text-slate-400 mt-4 max-w-2xl mx-auto"
-          >
-            Me especializo en construir aplicaciones escalables utilizando un conjunto diverso de tecnologías adaptadas a cada problema.
-          </motion.p>
-        </div>
+    <section id="stack" style={{ paddingTop: '7rem', paddingBottom: '7rem', position: 'relative' }}>
+      <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        {/* Grid de Tarjetas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {STACK.map((category, idx) => (
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-14"
+          style={{ maxWidth: '540px' }}
+        >
+          <h2
+            className="section-heading mt-4"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Tech Stack
+          </h2>
+          <p style={{ marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.75, fontWeight: 300 }}>
+            Adaptable en plataformas móviles, backend y tecnologías emergentes — siempre aprendiendo, siempre construyendo.
+          </p>
+        </motion.div>
+
+        {/* Asymmetric bento grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {STACK_BLOCKS.map((block, i) => (
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={block.title}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative p-8 rounded-3xl transition-all duration-300
-                bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-200
-                dark:bg-[#0f172a] dark:border-slate-800 dark:hover:border-blue-500/30 dark:hover:shadow-blue-900/10"
+              className={`card-shell ${block.span}`}
             >
-              {/* Icono */}
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors
-                bg-blue-50 text-blue-600 
-                dark:bg-slate-800 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white"
+              <div
+                className="card-inner p-7 flex flex-col gap-5 h-full"
+                style={{ minHeight: '220px' }}
               >
-                {category.icon}
-              </div>
-
-              {/* Título y Descripción */}
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                {category.title}
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                {category.description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {category.tags.map((tag) => (
-                  <span 
-                    key={tag} 
-                    className="px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors
-                    bg-slate-100 text-slate-600 border border-slate-200
-                    dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700
-                    group-hover:border-blue-200 dark:group-hover:border-blue-500/30"
+                {/* Icon + title row */}
+                <div className="flex items-start justify-between">
+                  <div
+                    className="flex items-center justify-center rounded-xl"
+                    style={{
+                      width: '2.75rem', height: '2.75rem',
+                      background: `${block.accent}18`,
+                      border: `1px solid ${block.accent}30`,
+                      color: block.accent,
+                      flexShrink: 0,
+                    }}
                   >
-                    {tag}
+                    {block.icon}
+                  </div>
+                  {/* Decorative count */}
+                  <span
+                    style={{
+                      fontSize: '0.65rem',
+                      color: 'var(--text-muted)',
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      fontWeight: 600,
+                    }}
+                  >
+                    {block.tags.length} tools
                   </span>
-                ))}
+                </div>
+
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.25rem',
+                      color: 'var(--text-primary)',
+                      lineHeight: 1.2,
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    {block.title}
+                  </h3>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.65, fontWeight: 300 }}>
+                    {block.description}
+                  </p>
+                </div>
+
+                {/* Tags */}
+                <div className="scroll-strip mt-auto" style={{ flexWrap: 'wrap' }}>
+                  {block.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.25rem 0.625rem',
+                        borderRadius: '6px',
+                        fontSize: '0.7rem',
+                        fontWeight: 600,
+                        background: `${block.accent}10`,
+                        color: block.accent,
+                        border: `1px solid ${block.accent}20`,
+                        flexShrink: 0,
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
