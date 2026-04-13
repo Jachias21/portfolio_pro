@@ -8,7 +8,7 @@ const STACK_BLOCKS = [
     span: 'lg:col-span-2',
     accent: '#5b7fff',
     tags: ['Java', 'Spring Boot', 'PHP', 'Laravel', 'Python', 'MySQL', 'MongoDB'],
-    description: 'Building robust server-side logic and efficient data pipelines that scale.',
+    description: 'Construyendo lógica de servidor robusta y pipelines de datos eficientes y escalables.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M4 7v10M4 7a3 3 0 016 0M4 7a3 3 0 00-3 3v4a3 3 0 003 3m0 0a3 3 0 006 0M10 7v10m0 0a3 3 0 006 0m0 0a3 3 0 003-3v-4a3 3 0 00-3-3m0 0a3 3 0 00-6 0" strokeLinecap="round" />
@@ -16,11 +16,11 @@ const STACK_BLOCKS = [
     ),
   },
   {
-    title: 'Mobile & Frontend',
+    title: 'Móvil y Frontend',
     span: 'lg:col-span-1',
     accent: '#a78bfa',
     tags: ['Kotlin', 'Flutter', 'Dart', 'React', 'TypeScript', 'React Native'],
-    description: 'Native and cross-platform apps with fluid, intuitive UX.',
+    description: 'Aplicaciones nativas y multiplataforma con una UX fluida e intuitiva.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -29,11 +29,11 @@ const STACK_BLOCKS = [
     ),
   },
   {
-    title: 'AI & Big Data',
+    title: 'IA y Big Data',
     span: 'lg:col-span-1',
     accent: '#34d399',
     tags: ['Python', 'Data Analysis', 'Prompt Engineering', 'ML Fundamentals'],
-    description: 'Integrating intelligence — currently mastering AI & Big Data at STUCOM.',
+    description: 'Integrando inteligencia — actualmente cursando el Máster en IA y Big Data en STUCOM.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" />
@@ -45,7 +45,7 @@ const STACK_BLOCKS = [
     span: 'lg:col-span-2',
     accent: '#fb923c',
     tags: ['Git', 'GitHub', 'Bash Scripting', 'Postman', 'IntelliJ IDEA', 'VS Code', 'Docker basics'],
-    description: 'Streamlining workflows from development to deployment.',
+    description: 'Optimizando flujos de trabajo desde el desarrollo hasta el despliegue.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" strokeLinecap="round" />
@@ -82,18 +82,14 @@ export default function TechStack() {
           className="mb-14"
           style={{ maxWidth: '540px' }}
         >
-          <span className="eyebrow mb-4" style={{ display: 'inline-flex' }}>What I use</span>
           <h2
             className="section-heading mt-4"
             style={{ color: 'var(--text-primary)' }}
           >
-            Tech Stack &{' '}
-            <span className="italic" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-secondary)' }}>
-              expertise
-            </span>
+            Tech Stack
           </h2>
           <p style={{ marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.75, fontWeight: 300 }}>
-            Adaptable across mobile, backend, and emerging technologies — always learning, always building.
+            Adaptable en plataformas móviles, backend y tecnologías emergentes — siempre aprendiendo, siempre construyendo.
           </p>
         </motion.div>
 

@@ -188,7 +188,6 @@ export default function Projects() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14"
         >
-          <span className="eyebrow mb-4" style={{ display: 'inline-flex' }}>Selected work</span>
           <h2 className="section-heading mt-4">
             Projects &{' '}
             <span className="italic" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-secondary)' }}>
@@ -208,7 +207,7 @@ export default function Projects() {
                 textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '1.5rem',
               }}
             >
-              Featured projects
+              Proyectos a destacar
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {PROJECTS.map((project, i) => (
@@ -225,7 +224,7 @@ export default function Projects() {
                 textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '1.5rem',
               }}
             >
-              Experience
+              Experiencia
             </p>
             <div className="card-shell">
               <div className="card-inner p-6">

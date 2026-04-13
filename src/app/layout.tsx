@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Portfolio — Joan Albert Chías",
   description: "Full-stack & mobile engineer based in Barcelona. Specialized in Kotlin, Spring Boot, Flutter, and AI. Available for hire.",
   openGraph: {
-    title: "Joan Albert Chías — Software Developer",
+    title: "Joan Albert Chías — AI & Software Engineer",
     description: "Full-stack & mobile engineer based in Barcelona. Available for hire.",
     type: "website",
   },

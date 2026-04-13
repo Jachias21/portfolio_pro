@@ -4,10 +4,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const links = [
-  { name: 'About', href: '#hero' },
+  { name: 'Sobre mi', href: '#hero' },
   { name: 'Stack', href: '#stack' },
-  { name: 'Work', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Proyectos', href: '#projects' },
 ];
 
 export default function Navbar() {
@@ -29,16 +28,6 @@ export default function Navbar() {
   return (
     <>
       <nav className={`nav-island ${scrolled ? 'scrolled' : ''}`} style={{ width: 'max-content', maxWidth: 'calc(100vw - 2rem)' }}>
-        {/* Logo */}
-        <a
-          href="#"
-          className="flex items-center gap-2 text-sm font-bold"
-          style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em', fontSize: '1.05rem' }}
-        >
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg" style={{ background: 'var(--accent)', fontSize: '0.75rem' }}>J</span>
-          Chías
-        </a>
-
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
           {links.map((link) => (
@@ -73,7 +62,7 @@ export default function Navbar() {
             className="hidden md:inline-flex btn-primary"
             style={{ padding: '0.4rem 1rem', fontSize: '0.78rem' }}
           >
-            Hire me
+            Contactame
           </a>
 
           {/* Hamburger */}

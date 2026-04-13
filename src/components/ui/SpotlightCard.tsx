@@ -11,7 +11,7 @@ interface SpotlightCardProps {
 export default function SpotlightCard({ 
   children, 
   className = "", 
-  spotlightColor = "rgba(59, 130, 246, 0.25)" // Azul Tailwind por defecto
+  spotlightColor = "rgba(59, 130, 246, 0.25)" 
 }: SpotlightCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });

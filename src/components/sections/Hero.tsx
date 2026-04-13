@@ -4,7 +4,7 @@ import { motion, Variants } from 'framer-motion';
 import { PROFILE, SOCIALS } from '@/data/portfolio';
 import { useEffect, useState } from 'react';
 
-const ROLES = ['Software Developer', 'Mobile Engineer', 'Backend Architect', 'AI Enthusiast'];
+const ROLES = ['Software Engineer', 'Mobile Developer', 'Backend Architect', 'AI Engineer'];
 
 const SOCIAL_LINKS = [
   {
@@ -120,7 +120,7 @@ export default function Hero() {
                   <span className="status-ring absolute inset-0 rounded-full" style={{ background: '#22c55e' }} />
                   <span className="relative rounded-full" style={{ background: '#22c55e', width: '8px', height: '8px' }} />
                 </span>
-                Available for hire · Barcelona
+                Disponible para trabajar · Barcelona
               </span>
             </motion.div>
 
@@ -138,10 +138,10 @@ export default function Hero() {
                 color: 'var(--text-primary)',
               }}
             >
-              Hi, I'm Joan
+              Hola, soy Joan Albert
               <br />
-              <span className="italic" style={{ color: 'var(--text-secondary)' }}>software </span>
-              <span className="gradient-text">engineer.</span>
+              <span className="italic" style={{ color: 'var(--text-secondary)' }}>Ai & Software </span>
+              <span className="gradient-text">Engineer.</span>
             </motion.h1>
 
             {/* Typewriter role */}
@@ -185,7 +185,7 @@ export default function Hero() {
               }}
             >
               {PROFILE.bio}
-              {' '}Currently pursuing a Master&apos;s in AI &amp; Big Data.
+              {' '}Actualmente cursando el Máster en IA y Big Data.
             </motion.p>
 
             {/* CTAs */}
@@ -197,7 +197,7 @@ export default function Hero() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <a href="#projects" className="btn-primary">
-                View my work
+                Ver mis proyectos
                 <span
                   className="flex items-center justify-center rounded-full"
                   style={{ width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.15)' }}
@@ -216,7 +216,7 @@ export default function Hero() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M9 12h6m-3-3v6M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" strokeLinecap="round" />
                 </svg>
-                Download CV
+                Descargar CV
               </a>
             </motion.div>
 
@@ -271,10 +271,10 @@ export default function Hero() {
 
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { value: '2+', label: 'Years exp.' },
-                    { value: '5+', label: 'Projects' },
-                    { value: '8+', label: 'Technologies' },
-                    { value: '1', label: 'Master\'s AI' },
+                    { value: '2+', label: 'Años exp.' },
+                    { value: '5+', label: 'Proyectos' },
+                    { value: '8+', label: 'Tecnologías' },
+                    { value: '1', label: 'Máster IA' },
                   ].map((stat) => (
                     <div key={stat.label}>
                       <p style={{ fontSize: '1.375rem', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
@@ -298,7 +298,7 @@ export default function Hero() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           style={{ color: 'var(--text-muted)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 600 }}
         >
-          <span>Scroll</span>
+          <span>Desplazar</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}

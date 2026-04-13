@@ -101,7 +101,7 @@ export default function Contact() {
                     style={{ background: '#22c55e', width: '10px', height: '10px' }}
                   />
                 </span>
-                Available for hire
+                Disponible para trabajar
               </span>
             </motion.div>
 
@@ -120,10 +120,10 @@ export default function Contact() {
                 marginBottom: '1.5rem',
               }}
             >
-              {"Let's start a"}{' '}
+              {"Empecemos un"}{' '}
               <br />
               <span className="italic gradient-text">
-                project together.
+                proyecto juntos.
               </span>
             </motion.h2>
 
@@ -141,8 +141,8 @@ export default function Contact() {
                 maxWidth: '480px',
               }}
             >
-              Me especializo en construir aplicaciones escalables e interfaces intuitivas.
-              Hablemos sobre cómo puedo ayudarte.
+              Me especializo en construir aplicaciones escalables e interfaces intuitivas. Especializado en aplicar IA en proyectos.
+              Preparado para empezar nuevos retos, aportar valor y seguir creciendo como profesional.
             </motion.p>
           </div>
 
