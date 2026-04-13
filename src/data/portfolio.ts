@@ -23,44 +23,65 @@ export const EXPERIENCE = [
   }
 ];
 
+export type ProjectMedia = {
+  type: 'image' | 'video';
+  src: string;
+  alt?: string;
+};
+
 export const PROJECTS = [
   {
     id: 1,
     title: "App Casino Royale",
     description: "Aplicación móvil nativa que simula juegos de casino (Ruleta, Blackjack) con gestión de usuarios. UI dinámica y responsive.",
     tags: ["Kotlin", "Spring Boot", "Android"],
-    link: "https://github.com/Jachias21/FondoCasinoRoyale_app.git"
+    link: "https://github.com/Jachias21/FondoCasinoRoyale_app.git",
+    media: [] as ProjectMedia[],
   },
   {
     id: 2,
     title: "AIDelivery - IA para Logística",
     description: "Sistema de reparto de productos perecederos automatizado con IA para optimización de rutas.",
     tags: ["IA", "Python", "Streamlit", "Data Analysis"],
-    link: "https://github.com/ronaldintriago/proyect1_IABD.git"
+    link: "https://github.com/ronaldintriago/proyect1_IABD.git",
+    media: [
+      { type: 'image' as const, src: '/images/aidelivery/aidelivery1.png', alt: 'AIDelivery dashboard' },
+      { type: 'image' as const, src: '/images/aidelivery/aidelivery2.png', alt: 'AIDelivery ruta optimizada' },
+      { type: 'image' as const, src: '/images/aidelivery/aidelivery3.png', alt: 'AIDelivery predicción de demanda' },
+    ],
   },
   {
     id: 3,
     title: "RainbowAI - Prediccion meteorológica de arcoiris",
     description: "App meteorològica que predice la probabilidad de ver un arcoiris en función de datos climáticos históricos y actuales.",
     tags: ["IA", "Python", "Streamlit", "Data Analysis"],
-    link: "https://github.com/nadiflexx/Meteorological-Forecasting-Platform.git"
+    link: "https://github.com/nadiflexx/Meteorological-Forecasting-Platform.git",
+    media: [
+      { type: 'image' as const, src: '/images/rainbowai/LOGO_RainbowAI.png', alt: 'RainbowAI logo' },
+      { type: 'image' as const, src: '/images/rainbowai/rainbow2.png', alt: 'RainbowAI predicción' },
+      { type: 'image' as const, src: '/images/rainbowai/rainbow3.png', alt: 'RainbowAI mapa de calor' },
+    ],
   },
   {
     id: 4,
     title: "SoundWave - Sistema de recomendación musical",
-    description: "Aplicación que recomienda musica segun tu estado de animo ",
+    description: "Aplicación que recomienda musica segun tu estado de animo",
     tags: ["IA", "Python", "Angular", "Spotify API", "PyTorch"],
-    link: "https://github.com/Jachias21/music_recommendation_system.git"
+    link: "https://github.com/Jachias21/music_recommendation_system.git",
+    media: [
+      { type: 'image' as const, src: '/images/soundwave/soundwave1.png', alt: 'SoundWave interfaz principal' },
+      { type: 'image' as const, src: '/images/soundwave/soundwave2.png', alt: 'SoundWave recomendaciones' },
+      { type: 'image' as const, src: '/images/soundwave/soundwave3.png', alt: 'SoundWave playlist' },
+    ],
   },
   {
     id: 5,
     title: "AiColonDiagnosis",
     description: "Proyecto de diagnóstico asistido por IA para cáncer de colon",
     tags: ["IA", "Python", "TensorFlow", "Keras"],
-    link: "https://github.com/Jachias21/AiColonDiagnosis.git"
-  }
-
-
+    link: "https://github.com/Jachias21/AiColonDiagnosis.git",
+    media: [] as ProjectMedia[],
+  },
 ];
 
 export const EDUCATION = [
