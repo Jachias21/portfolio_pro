@@ -36,7 +36,17 @@ export const PROJECTS = [
     description: "Aplicación móvil nativa que simula juegos de casino (Ruleta, Blackjack) con gestión de usuarios. UI dinámica y responsive.",
     tags: ["Kotlin", "Spring Boot", "Android"],
     link: "https://github.com/Jachias21/FondoCasinoRoyale_app.git",
-    media: [] as ProjectMedia[],
+    media: [
+      { type: 'image' as const, src: '/images/casino/casino_logo.jpeg', alt: 'Casino Royale logo' },
+      { type: 'image' as const, src: '/images/casino/casino1.png', alt: 'Casino Royale inicio' },
+      { type: 'image' as const, src: '/images/casino/casino2.png', alt: 'Casino Royale splash' },
+      { type: 'image' as const, src: '/images/casino/casino3.png', alt: 'Casino Royale login' },
+      { type: 'image' as const, src: '/images/casino/casino4.png', alt: 'Casino Royale loading' },
+      { type: 'image' as const, src: '/images/casino/casino5.png', alt: 'Casino Royale ruleta' },
+      { type: 'image' as const, src: '/images/casino/casino6.png', alt: 'Casino Royale tragaperras' },
+      { type: 'image' as const, src: '/images/casino/casino7.png', alt: 'Casino Royale rasca' },
+
+    ] as ProjectMedia[],
   },
   {
     id: 2,
@@ -45,9 +55,11 @@ export const PROJECTS = [
     tags: ["IA", "Python", "Streamlit", "Data Analysis"],
     link: "https://github.com/ronaldintriago/proyect1_IABD.git",
     media: [
-      { type: 'image' as const, src: '/images/aidelivery/aidelivery1.png', alt: 'AIDelivery dashboard' },
+      { type: 'image' as const, src: '/images/aidelivery/aidelivery1.png', alt: 'AIDelivery logo' },
       { type: 'image' as const, src: '/images/aidelivery/aidelivery2.png', alt: 'AIDelivery ruta optimizada' },
       { type: 'image' as const, src: '/images/aidelivery/aidelivery3.png', alt: 'AIDelivery predicción de demanda' },
+      { type: 'image' as const, src: '/images/aidelivery/aidelivery4.png', alt: 'AIDelivery panel de control' },
+      { type: 'image' as const, src: '/images/aidelivery/aidelivery5.png', alt: 'AIDelivery auditoria' },
     ],
   },
   {
@@ -60,6 +72,7 @@ export const PROJECTS = [
       { type: 'image' as const, src: '/images/rainbowai/LOGO_RainbowAI.png', alt: 'RainbowAI logo' },
       { type: 'image' as const, src: '/images/rainbowai/rainbow2.png', alt: 'RainbowAI predicción' },
       { type: 'image' as const, src: '/images/rainbowai/rainbow3.png', alt: 'RainbowAI mapa de calor' },
+      { type: 'image' as const, src: '/images/rainbowai/rainbow4.png', alt: 'RainbowAI arcoirirs' },
     ],
   },
   {
@@ -69,6 +82,7 @@ export const PROJECTS = [
     tags: ["IA", "Python", "Angular", "Spotify API", "PyTorch"],
     link: "https://github.com/Jachias21/music_recommendation_system.git",
     media: [
+      { type: 'image' as const, src: '/images/soundwave/SoundWaveLogo.png', alt: 'SoundWave logo' },
       { type: 'image' as const, src: '/images/soundwave/soundwave1.png', alt: 'SoundWave interfaz principal' },
       { type: 'image' as const, src: '/images/soundwave/soundwave2.png', alt: 'SoundWave recomendaciones' },
       { type: 'image' as const, src: '/images/soundwave/soundwave3.png', alt: 'SoundWave playlist' },

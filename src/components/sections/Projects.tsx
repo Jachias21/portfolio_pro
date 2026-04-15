@@ -31,7 +31,7 @@ export default function Projects() {
             </span>
           </h2>
           <p style={{ marginTop: '0.75rem', color: 'var(--text-muted)', fontSize: '0.8125rem', fontWeight: 500 }}>
-            Pasa el cursor sobre una tarjeta para expandir los detalles del proyecto.
+            Proyectos destacados.
           </p>
         </motion.div>
 

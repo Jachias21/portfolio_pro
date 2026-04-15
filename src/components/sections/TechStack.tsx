@@ -1,13 +1,29 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
+import { 
+  SiSpringboot, SiPhp, SiLaravel, SiPython, SiMysql, SiMongodb, 
+  SiKotlin, SiFlutter, SiDart, SiReact, SiTypescript, 
+  SiGit, SiGithub, SiGnubash, SiPostman, SiIntellijidea, SiDocker
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+import { VscVscode } from 'react-icons/vsc';
+import { BrainCircuit, BarChart3 } from 'lucide-react';
 
 const STACK_BLOCKS = [
   {
     title: 'Backend & Data',
     span: 'lg:col-span-2',
     accent: '#5b7fff',
-    tags: ['Java', 'Spring Boot', 'PHP', 'Laravel', 'Python', 'MySQL', 'MongoDB'],
+    tags: [
+      { name: 'Java', color: '#007396', icon: FaJava },
+      { name: 'Spring Boot', color: '#6DB33F', icon: SiSpringboot },
+      { name: 'PHP', color: '#777BB4', icon: SiPhp },
+      { name: 'Laravel', color: '#FF2D20', icon: SiLaravel },
+      { name: 'Python', color: '#F8C63D', icon: SiPython },
+      { name: 'MySQL', color: '#4479A1', icon: SiMysql },
+      { name: 'MongoDB', color: '#47A248', icon: SiMongodb },
+    ],
     description: 'Construyendo lógica de servidor robusta y pipelines de datos eficientes y escalables.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -19,7 +35,14 @@ const STACK_BLOCKS = [
     title: 'Móvil y Frontend',
     span: 'lg:col-span-1',
     accent: '#a78bfa',
-    tags: ['Kotlin', 'Flutter', 'Dart', 'React', 'TypeScript', 'React Native'],
+    tags: [
+      { name: 'Kotlin', color: '#7F52FF', icon: SiKotlin },
+      { name: 'Flutter', color: '#54C5F8', icon: SiFlutter },
+      { name: 'Dart', color: '#0175C2', icon: SiDart },
+      { name: 'React', color: '#61DAFB', icon: SiReact },
+      { name: 'TypeScript', color: '#3178C6', icon: SiTypescript },
+      { name: 'React Native', color: '#61DAFB', icon: SiReact },
+    ],
     description: 'Aplicaciones nativas y multiplataforma con una UX fluida e intuitiva.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -32,7 +55,12 @@ const STACK_BLOCKS = [
     title: 'IA y Big Data',
     span: 'lg:col-span-1',
     accent: '#34d399',
-    tags: ['Python', 'Data Analysis', 'Prompt Engineering', 'ML Fundamentals'],
+    tags: [
+      { name: 'Python', color: '#F8C63D', icon: SiPython },
+      { name: 'Data Analysis', color: '#FFCA28', icon: BarChart3 },
+      { name: 'Prompt Eng.', color: '#F4A261', icon: BrainCircuit },
+      { name: 'ML', color: '#E76F51', icon: BrainCircuit },
+    ],
     description: 'Integrando inteligencia — actualmente cursando el Máster en IA y Big Data en STUCOM.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -44,7 +72,15 @@ const STACK_BLOCKS = [
     title: 'DevOps & Tools',
     span: 'lg:col-span-2',
     accent: '#fb923c',
-    tags: ['Git', 'GitHub', 'Bash Scripting', 'Postman', 'IntelliJ IDEA', 'VS Code', 'Docker basics'],
+    tags: [
+      { name: 'Git', color: '#F05032', icon: SiGit },
+      { name: 'GitHub', color: '#ECECEC', icon: SiGithub },
+      { name: 'Bash', color: '#4EAA25', icon: SiGnubash },
+      { name: 'Postman', color: '#FF6C37', icon: SiPostman },
+      { name: 'IntelliJ', color: '#FE315D', icon: SiIntellijidea },
+      { name: 'VS Code', color: '#007ACC', icon: VscVscode },
+      { name: 'Docker', color: '#2496ED', icon: SiDocker },
+    ],
     description: 'Optimizando flujos de trabajo desde el desarrollo hasta el despliegue.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -155,27 +191,32 @@ export default function TechStack() {
                 </div>
 
                 {/* Tags */}
-                <div className="scroll-strip mt-auto" style={{ flexWrap: 'wrap' }}>
-                  {block.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        padding: '0.25rem 0.625rem',
-                        borderRadius: '6px',
-                        fontSize: '0.7rem',
-                        fontWeight: 600,
-                        background: `${block.accent}10`,
-                        color: block.accent,
-                        border: `1px solid ${block.accent}20`,
-                        flexShrink: 0,
-                        letterSpacing: '0.02em',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="scroll-strip mt-auto" style={{ flexWrap: 'wrap', gap: '0.5rem' }}>
+                  {block.tags.map((tag) => {
+                    const Icon = tag.icon;
+                    return (
+                      <span
+                        key={tag.name}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.375rem',
+                          padding: '0.35rem 0.75rem',
+                          borderRadius: '8px',
+                          fontSize: '0.75rem',
+                          fontWeight: 500,
+                          background: `${tag.color}15`,
+                          color: tag.color,
+                          border: `1px solid ${tag.color}30`,
+                          flexShrink: 0,
+                          letterSpacing: '0.02em',
+                        }}
+                      >
+                        <Icon style={{ fontSize: '0.9rem' }} />
+                        {tag.name}
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
             </motion.div>
