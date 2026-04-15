@@ -53,7 +53,7 @@ export const PROJECT_DETAILS: Record<number, {
       { title: 'Dashboard interactivo', desc: 'Interfaz Streamlit con mapas de calor y series temporales de datos climáticos.', icon: '⬡' },
     ],
     images: [
-      '/images/rainbowai/LOGO_RainbowAI.png',
+      '/images/rainbowai/rainbow1.png',
       '/images/rainbowai/rainbow2.png',
     ],
     accentColor: '#a78bfa',

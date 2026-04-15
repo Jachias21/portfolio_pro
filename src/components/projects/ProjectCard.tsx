@@ -129,7 +129,7 @@ function MediaCarousel({
               alt={current.alt ?? project.title}
               fill
               sizes="(max-width: 640px) 100vw, 320px"
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'contain' }}
               loading="lazy"
             />
           ) : (
@@ -222,8 +222,8 @@ export default function ProjectCard({ project, index, onOpen }: ProjectCardProps
 
         {/* ── Visual header / Carousel ── */}
         <div style={{
-          height: '160px',
-          background: `linear-gradient(135deg, ${accent}14 0%, ${accent}07 100%)`,
+          height: '200px',
+          background: '#080910',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
