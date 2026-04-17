@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import { PROJECTS } from '@/data/portfolio';
 import { PROJECT_DETAILS, PROJECT_EMOJIS } from '@/data/projectDetails';
 import ProjectGallery from '@/components/projects/ProjectGallery';
@@ -19,7 +20,24 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const details = PROJECT_DETAILS[project.id];
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  // ── Close handlers ─────────────────────────────────────────────────────────
+  // ── Markdown loading ────────────────────────────────────────────────────────
+  const [mdContent, setMdContent] = useState<string | null>(null);
+  const [mdLoading, setMdLoading] = useState(false);
+
+  useEffect(() => {
+    const slug = (project as typeof project & { slug?: string }).slug;
+    if (!slug) return;
+
+    setMdLoading(true);
+    setMdContent(null);
+
+    fetch(`/content/${slug}.md`)
+      .then(r => r.ok ? r.text() : null)
+      .then(text => { setMdContent(text); setMdLoading(false); })
+      .catch(() => { setMdLoading(false); });
+  }, [project]);
+
+  // ── Close handlers ──────────────────────────────────────────────────────────
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === overlayRef.current) onClose();
   };
@@ -35,13 +53,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  // ── Meta panel items ────────────────────────────────────────────────────────
-  const metaItems = [
-    { label: 'Año',      value: details.year },
-    { label: 'Rol',      value: details.role },
-    { label: 'Timeline', value: details.timeline },
-    { label: 'Cliente',  value: details.client },
-  ];
+  const tools = (project as typeof project & { tools?: string[] }).tools;
 
   return (
     <motion.div
@@ -93,22 +105,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         />
 
         {/* ── Scrollable body ── */}
-        <div
-          style={{
-            overflowY: 'auto',
-            flex: 1,
-            scrollbarWidth: 'none',
-          }}
-        >
-          {/* ── Hero: 2-col split on desktop ── */}
+        <div style={{ overflowY: 'auto', flex: 1, scrollbarWidth: 'none' }}>
+
+          {/* ── Hero grid: gallery + meta ── */}
           <div
+            className="modal-hero-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'clamp(260px, 48%, 480px) 1fr',
               minHeight: '340px',
               borderBottom: '1px solid rgba(255,255,255,0.06)',
             }}
-            className="modal-hero-grid"
           >
             {/* Gallery */}
             <div style={{ position: 'relative', minHeight: '300px' }}>
@@ -121,16 +128,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Description + meta */}
-            <div
-              style={{
-                padding: '1.75rem 1.75rem 1.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.25rem',
-                borderLeft: '1px solid rgba(255,255,255,0.06)',
-              }}
-            >
-              {/* Long description */}
+            <div style={{
+              padding: '1.75rem 1.75rem 1.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.25rem',
+              borderLeft: '1px solid rgba(255,255,255,0.06)',
+            }}>
               <p style={{
                 fontSize: '0.9rem',
                 color: 'var(--text-secondary)',
@@ -141,14 +145,51 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {details.longDesc}
               </p>
 
-              {/* Meta panel */}
               <ProjectMetaPanel
-                items={metaItems}
                 accentColor={details.accentColor}
                 githubUrl={project.link}
+                tools={tools}
               />
             </div>
           </div>
+
+          {/* ── Markdown content ── */}
+          {(mdLoading || mdContent) && (
+            <div style={{
+              padding: '2rem 2rem 0',
+              borderBottom: '1px solid rgba(255,255,255,0.06)',
+            }}>
+              <p style={{
+                fontSize: '0.58rem',
+                fontWeight: 800,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--text-muted)',
+                marginBottom: '1.25rem',
+              }}>
+                Documentación del proyecto
+              </p>
+
+              {mdLoading ? (
+                /* Skeleton */
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', paddingBottom: '2rem' }}>
+                  {[100, 90, 75, 60, 85].map((w, i) => (
+                    <div key={i} style={{
+                      height: '12px',
+                      width: `${w}%`,
+                      borderRadius: '6px',
+                      background: 'rgba(255,255,255,0.06)',
+                      animation: 'pulse 1.6s ease-in-out infinite',
+                    }} />
+                  ))}
+                </div>
+              ) : (
+                <div className="md-prose" style={{ paddingBottom: '2rem' }}>
+                  <ReactMarkdown>{mdContent!}</ReactMarkdown>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* ── Features grid ── */}
           <div style={{ padding: '1.75rem' }}>
@@ -160,29 +201,57 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
       </motion.div>
 
-      {/* Responsive override — stacks on mobile */}
       <style>{`
         @media (max-width: 640px) {
-          .modal-hero-grid {
-            grid-template-columns: 1fr !important;
-          }
+          .modal-hero-grid { grid-template-columns: 1fr !important; }
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 0.5; }
+          50%       { opacity: 1;   }
+        }
+
+        /* ── Editorial markdown styles ── */
+        .md-prose { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.8; font-weight: 300; }
+        .md-prose h1, .md-prose h2, .md-prose h3 {
+          font-family: var(--font-display);
+          color: var(--text-primary);
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          margin: 1.5rem 0 0.5rem;
+          line-height: 1.2;
+        }
+        .md-prose h1 { font-size: 1.25rem; }
+        .md-prose h2 { font-size: 1.05rem; }
+        .md-prose h3 { font-size: 0.9rem; color: var(--text-secondary); }
+        .md-prose p  { margin: 0.6rem 0; }
+        .md-prose ul, .md-prose ol { padding-left: 1.25rem; margin: 0.5rem 0; }
+        .md-prose li { margin: 0.3rem 0; }
+        .md-prose strong { color: var(--text-primary); font-weight: 600; }
+        .md-prose em    { color: var(--text-secondary); font-style: italic; }
+        .md-prose code  {
+          font-size: 0.8rem;
+          background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 4px;
+          padding: 0.1rem 0.35rem;
+          font-family: 'JetBrains Mono', monospace;
+        }
+        .md-prose hr {
+          border: none;
+          border-top: 1px solid rgba(255,255,255,0.07);
+          margin: 1.5rem 0;
         }
       `}</style>
     </motion.div>
   );
 }
 
-// ── Sub-component: top header bar ─────────────────────────────────────────────
+// ── ModalHeader ───────────────────────────────────────────────────────────────
 function ModalHeader({
-  title,
-  tags,
-  accentColor,
-  onClose,
+  title, tags, accentColor, onClose,
 }: {
-  title: string;
-  tags: string[];
-  accentColor: string;
-  onClose: () => void;
+  title: string; tags: string[]; accentColor: string; onClose: () => void;
 }) {
   return (
     <div style={{
@@ -195,11 +264,9 @@ function ModalHeader({
       flexShrink: 0,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.875rem', minWidth: 0 }}>
-        {/* Accent dot */}
         <span style={{
           display: 'inline-block',
-          width: '8px',
-          height: '8px',
+          width: '8px', height: '8px',
           borderRadius: '50%',
           background: accentColor,
           boxShadow: `0 0 8px ${accentColor}80`,
@@ -220,7 +287,6 @@ function ModalHeader({
           {title}
         </h2>
 
-        {/* Tags (hidden on very small screens) */}
         <div className="modal-tags" style={{ display: 'flex', gap: '0.375rem', flexShrink: 0 }}>
           {tags.slice(0, 3).map(tag => (
             <span key={tag} style={{
@@ -240,21 +306,17 @@ function ModalHeader({
         </div>
       </div>
 
-      {/* Close button */}
       <button
         onClick={onClose}
         aria-label="Cerrar"
         style={{
           flexShrink: 0,
-          width: '2rem',
-          height: '2rem',
+          width: '2rem', height: '2rem',
           borderRadius: '50%',
           background: 'rgba(255,255,255,0.06)',
           border: '1px solid rgba(255,255,255,0.1)',
           color: 'var(--text-secondary)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
           cursor: 'pointer',
           transition: 'background 0.2s, color 0.2s',
         }}
