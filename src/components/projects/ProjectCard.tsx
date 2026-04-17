@@ -293,18 +293,86 @@ export default function ProjectCard({ project, index, onOpen }: ProjectCardProps
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
           }}>{project.description}</p>
-
-          {/* Bottom row */}
+          {/* Bottom row: year + status badge */}
           <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            marginTop: '0.25rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginTop: '0.5rem',
             paddingTop: '0.75rem',
             borderTop: '1px solid var(--border-subtle)',
           }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              {details?.year ?? '2025'}
+            <span style={{
+              fontSize: '0.65rem',
+              color: 'var(--text-muted)',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+            }}>
+              {(project as typeof project & { year?: string }).year ?? '2025'}
             </span>
+
+            {(() => {
+              const status = (project as typeof project & { status?: 'completed' | 'in-progress' }).status;
+              const isCompleted = status !== 'in-progress';
+              const dotColor  = isCompleted ? '#34d399' : '#fbbf24';
+              const glowColor = isCompleted ? '#34d39944' : '#fbbf2444';
+              const label     = isCompleted ? 'Finalizado' : 'En desarrollo';
+              return (
+                <span style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '0.2rem 0.55rem',
+                  borderRadius: '100px',
+                  fontSize: '0.6rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  background: `${dotColor}12`,
+                  border: `1px solid ${dotColor}30`,
+                  color: dotColor,
+                }}>
+                  {/* Glowing dot */}
+                  <span style={{
+                    position: 'relative',
+                    display: 'inline-flex',
+                    width: '6px',
+                    height: '6px',
+                    flexShrink: 0,
+                  }}>
+                    {!isCompleted && (
+                      <span style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: '50%',
+                        background: dotColor,
+                        opacity: 0.6,
+                        animation: 'statusPulse 1.8s ease-in-out infinite',
+                        transform: 'scale(1)',
+                      }} />
+                    )}
+                    <span style={{
+                      position: 'relative',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: dotColor,
+                      boxShadow: `0 0 6px ${glowColor}`,
+                    }} />
+                  </span>
+                  {label}
+                </span>
+              );
+            })()}
           </div>
+
+          <style>{`
+            @keyframes statusPulse {
+              0%, 100% { transform: scale(1); opacity: 0.6; }
+              50%       { transform: scale(2); opacity: 0; }
+            }
+          `}</style>
+
         </div>
       </div>
     </motion.article>

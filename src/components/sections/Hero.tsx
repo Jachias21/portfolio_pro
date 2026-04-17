@@ -99,7 +99,7 @@ export default function Hero() {
       <div className="dot-grid absolute inset-0 opacity-40" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-16 items-center">
+        <div className="grid grid-cols-1 gap-16 items-center">
 
           {/* ── LEFT: Text block ── */}
           <div>
@@ -242,51 +242,6 @@ export default function Hero() {
               ))}
             </motion.div>
           </div>
-
-          {/* ── RIGHT: Stats card (desktop) ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block"
-          >
-            <div className="card-shell" style={{ width: '260px' }}>
-              <div className="card-inner p-6 flex flex-col gap-5">
-                {/* Avatar placeholder */}
-                <div
-                  className="rounded-xl flex items-center justify-center text-3xl"
-                  style={{ height: '200px', background: 'linear-gradient(135deg, var(--accent-dim) 0%, rgba(139,92,246,0.12) 100%)', border: '1px solid var(--border-subtle)' }}
-                >
-                  🚀
-                </div>
-
-                <div>
-                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                    Location
-                  </p>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 500 }}>Barcelona, España</p>
-                </div>
-
-                <div className="h-px" style={{ background: 'var(--border-subtle)' }} />
-
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { value: '2+', label: 'Años exp.' },
-                    { value: '5+', label: 'Proyectos' },
-                    { value: '8+', label: 'Tecnologías' },
-                    { value: '1', label: 'Máster IA' },
-                  ].map((stat) => (
-                    <div key={stat.label}>
-                      <p style={{ fontSize: '1.375rem', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-display)', lineHeight: 1 }}>
-                        {stat.value}
-                      </p>
-                      <p style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '2px' }}>{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
         </div>
 
