@@ -313,7 +313,7 @@ export default function ProjectCard({ project, index, onOpen }: ProjectCardProps
             </span>
 
             {(() => {
-              const status = (project as typeof project & { status?: 'completed' | 'in-progress' }).status;
+              const status = (project as { status?: string }).status;
               const isCompleted = status !== 'in-progress';
               const dotColor  = isCompleted ? '#34d399' : '#fbbf24';
               const glowColor = isCompleted ? '#34d39944' : '#fbbf2444';
